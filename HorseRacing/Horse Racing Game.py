@@ -1,7 +1,8 @@
-from tkinter import *
+rfrom tkinter import *
 from time import sleep
 import random
 from random import randint
+import sys
 
 root = Tk()
 ###################Click For Info######
@@ -1117,6 +1118,9 @@ canvas1.tag_bind(sixthHorse, '<ButtonPress-1>', H6Clicked)
 
 root.bind('<Motion>', updateMouseType)
 
+#Original Re-ordeing of levels
+reOrderLevels("e")
+
 menubar = Menu(root)
 def hello():
     print("Hi")
@@ -1145,13 +1149,16 @@ def rules2():
     toplevel = Toplevel()
     label = Label(toplevel, text= (str(rulesForGame2)),font = "Calibri 20",height=0,width = 0)
     label.pack()
+
+def exitProgram():
+    root.destroy()
     
 # create a pulldown menu, and add it to the menu bar
 filemenu = Menu(menubar, tearoff=0)
 filemenu.add_command(label="Open", command=rules)
 filemenu.add_command(label="Save", command=rules2)
 filemenu.add_separator()
-filemenu.add_command(label="Exit", command=root.quit)
+filemenu.add_command(label="Exit", command=exitProgram)
 menubar.add_cascade(label="Game", menu=filemenu)
 
 # create more pulldown menus
